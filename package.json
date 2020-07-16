@@ -1,0 +1,37 @@
+{
+  "name": "@xan105/fs",
+  "version": "1.0.0",
+  "description": "A wrapper for the Node.js 'fs' module with some useful functions",
+  "type": "module",
+  "main": "fs.cjs",
+  "exports": {
+    "import": "./esm.mjs",
+    "require": "./fs.cjs"
+  },
+  "engines": {
+    "node": ">=0.12"
+  },
+  "scripts": {
+    "lint": "npx eslint --ignore-path .gitignore ./**/*.{cjs,mjs}"
+  },
+  "keywords": [
+    "fs"
+  ],
+  "author": {
+    "name": "Anthony Beaumont",
+    "email": "dev.xan105@outlook.be",
+    "url": "https://xan105.com/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xan105/node-fs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xan105/node-fs/issues"
+  },
+  "homepage": "https://github.com/xan105/node-fs#readme",
+  "devDependencies": {
+    "eslint": "^7.4.0"
+  }
+}
