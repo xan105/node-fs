@@ -29,13 +29,32 @@ const path = require('path');
 const crypto = require('crypto');
 
 module.exports.readFile = (filePath, options) => {
-  return fs.promises.readFile(filePath, options);
+  return new Promise((resolve,reject) => { 
+      fs.promises.readFile(filePath, options)
+      .then((data) => {
+        if (options &&
+            (
+              ( typeof(options) === "string" && options.toLowerCase().startsWith("utf")) || 
+              ( options === Object(options) && options.encoding && options.encoding.toLowerCase().startsWith("utf"))
+            ) && data.charCodeAt(0) === 0xFEFF) //BOM
+        {
+          console.warn(`Stripped UTF BOM from ${filePath}; Use options: {encoding: "utf...", bom: true} with writeFile() to restore it.`);
+          return resolve(data.slice(1))
+        } else {
+          return resolve(data)
+        }
+      })
+      .catch((err) => { return reject(err) });  
+  });
 }
 
 module.exports.writeFile = (filePath, data, options) => {
   return new Promise((resolve,reject) => {
       fs.promises.mkdir(path.parse(filePath).dir, { recursive: true })
-      .then(() => { return fs.promises.writeFile(filePath, data, options) })
+      .then(() => { 
+        if (options && typeof(options) !== "string" && options === Object(options) && options.bom === true && options.encoding && options.encoding.toLowerCase().startsWith("utf")) data = "\ufeff" + data;
+        return fs.promises.writeFile(filePath, data, options) 
+      })
       .then(() => { return resolve(filePath) })
       .catch((err) => { return reject(err) });
   });      
