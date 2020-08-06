@@ -52,7 +52,10 @@ module.exports.writeFile = (filePath, data, options) => {
   return new Promise((resolve,reject) => {
       fs.promises.mkdir(path.parse(filePath).dir, { recursive: true })
       .then(() => { 
-        if (options && typeof(options) !== "string" && options === Object(options) && options.bom === true && options.encoding && options.encoding.toLowerCase().startsWith("utf")) data = "\ufeff" + data;
+        if (options && typeof(options) !== "string" && options === Object(options)) {
+         if (options.bom === true && options.encoding && options.encoding.toLowerCase().startsWith("utf")) data = "\ufeff" + data;
+         delete options.bom; //remove custom option
+        }
         return fs.promises.writeFile(filePath, data, options) 
       })
       .then(() => { return resolve(filePath) })
