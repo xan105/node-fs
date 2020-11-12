@@ -27,6 +27,7 @@ SOFTWARE.
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const win32 = require('./win32.js');
 
 module.exports.readFile = (filePath, options) => {
   return new Promise((resolve,reject) => { 
@@ -108,9 +109,9 @@ module.exports.exists = function (target) {
    });
 }
 
-module.exports.existsAndIsOlderThan = function (target, option = {}) {
+const existsAndIsOlderOrYoungerThan = module.exports.existsAndIsOlderOrYoungerThan = function (target, option = {}) {
 
-   let options = {
+   const options = {
      timeUnit: option.timeUnit || 'd',
      time: option.time || 1,
      younger: option.younger || false
@@ -143,6 +144,16 @@ module.exports.existsAndIsOlderThan = function (target, option = {}) {
       
       }).catch(() => resolve(false));
    });
+}
+
+module.exports.existsAndIsOlderThan = function (target, option = {}){
+	option.younger = false;
+	return existsAndIsOlderOrYoungerThan(target, option)
+}
+
+module.exports.existsAndIsYoungerThan = function (target, option = {}){
+	option.younger = true;
+	return existsAndIsOlderOrYoungerThan(target, option)
 }
 
 module.exports.stats = function (target) {
@@ -199,3 +210,5 @@ module.exports.hashFile = (filePath, algo = "sha1") => {
   });
   
 }
+
+module.exports.win32 = win32;
