@@ -27,7 +27,7 @@ SOFTWARE.
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const win32 = require('./win32.cjs');
+const win32 = require('./win32/win32.cjs');
 
 module.exports.readFile = (filePath, options) => {
   return new Promise((resolve,reject) => { 

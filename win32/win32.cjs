@@ -24,6 +24,8 @@ SOFTWARE.
 
 'use strict';
 
+const fileAttribute = require('./fileAttribute.cjs');
+
 module.exports.sanitizeFileName = function (string) {
  
  if (typeof string !== "string") throw "ERR_INVALID_ARG_TYPE";
@@ -36,3 +38,5 @@ module.exports.sanitizeFileName = function (string) {
  
  return string;
 }
+
+module.exports.attrib = fileAttribute;

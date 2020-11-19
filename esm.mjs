@@ -13,3 +13,4 @@ export const stats = module.stats;
 export const mkdir = module.mkdir;
 export const rmdir = module.rmdir;
 export const hashFile = module.hashFile;
+export const win32 = module.win32;
