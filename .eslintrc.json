@@ -19,7 +19,7 @@
       "no-eval": "error",
       "require-await": "warn",
       "strict": "error",
-      "no-useless-escape": "warn"
+      "no-useless-escape": "off"
     },
     "overrides": [
       {

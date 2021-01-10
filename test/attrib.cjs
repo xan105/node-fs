@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require("../fs.cjs");
+const fs = require("../lib/fs.cjs");
 
 
 (async()=>{
