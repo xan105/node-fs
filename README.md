@@ -4,7 +4,5 @@ Install
 -------
 
 ```
-npm install https://github.com/xan105/node-fs
-//or
-npm install xan105/node-fs
+npm install @xan105/node-fs
 ```
