@@ -4,5 +4,5 @@ Install
 -------
 
 ```
-npm install @xan105/node-fs
+npm install @xan105/fs
 ```
