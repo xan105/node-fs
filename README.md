@@ -49,9 +49,22 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   Move on same drive otherwise copy to target and delete origin.
 
 ### `exists(path: string): Promise<bool>`
-### `existsAndIsOlderOrYoungerThan(path: string, option?: IExistsAndIsOption): Promise<bool>`
-### `existsAndIsOlderThan(path: string, option?: IExistsAndIsOption): Promise<bool>`
-### `existsAndIsYoungerThan(path: string, option?: IExistsAndIsOption): Promise<bool>`
+### `existsAndIsOlderOrYoungerThan(path: string, option?: obj): Promise<bool>`
+
+`timeUnit`: s|m|h|d|w|M|Y (default day)
+`time`: amount of time unit (default 1)
+`younger`: compare mode younger than (true) or older than (false/default)
+
+### `existsAndIsOlderThan(path: string, option?: obj): Promise<bool>`
+
+`timeUnit`: s|m|h|d|w|M|Y (default day)
+`time`: amount of time unit (default 1)
+
+### `existsAndIsYoungerThan(path: string, option?: obj): Promise<bool>`
+
+`timeUnit`: s|m|h|d|w|M|Y (default day)
+`time`: amount of time unit (default 1)
+
 ### `stat(path: string): Promise<any>`
   
   alias `stats(path: string): Promise<any>`
@@ -68,6 +81,8 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
 ### `isDirEmpty(dirPath: string): Promise<bool>`
 ### `hashFile(filePath: string, algo?: string): Promise<string>`
+
+  `algo` defaults to "sha1". Uses stream.
 
 ### path
 

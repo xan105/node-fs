@@ -9,9 +9,9 @@ export function mv(oldPath: string, newPath: string): Promise<string>;
 export function exists(path: string): Promise<bool>;
 
 declare interface IExistsAndIsOption{
-  timeUnit: string,
-  time: number,
-  younger: bool,
+  timeUnit?: string,
+  time?: number,
+  younger?: bool,
 }
 
 export function existsAndIsOlderOrYoungerThan(path: string, option?: IExistsAndIsOption): Promise<bool>;
