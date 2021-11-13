@@ -1,6 +1,6 @@
-export function readFile(filePath: string, options: any): Promise<string | Buffer>;
+export function readFile(filePath: string, options?: any): Promise<string | Buffer>;
 export function readJSON(filePath: string): Promise<string>;
-export function writeFile(filePath: string, data: any, options: any): Promise<string>;
+export function writeFile(filePath: string, data: any, options?: any): Promise<string>;
 export function writeJSON(filePath: string, data: any, pretty: bool): Promise<string>;
 export function copyFile(src: string, dest: string, flags: any): Promise<void>;
 export function unlink(filePath: string): Promise<void>;
