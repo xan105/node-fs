@@ -51,18 +51,18 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 ### `exists(path: string): Promise<bool>`
 ### `existsAndIsOlderOrYoungerThan(path: string, option?: obj): Promise<bool>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)
-`time`: amount of time unit (default 1)
+`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
+`time`: amount of time unit (default 1)</br>
 `younger`: compare mode younger than (true) or older than (false/default)
 
 ### `existsAndIsOlderThan(path: string, option?: obj): Promise<bool>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)
+`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
 
 ### `existsAndIsYoungerThan(path: string, option?: obj): Promise<bool>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)
+`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
 
 ### `stat(path: string): Promise<any>`
