@@ -1,4 +1,4 @@
-import { win32 } from "../lib/esm.js";
+import { win32 } from "../lib/index.js";
 
 const file = "./attrib.js";
 

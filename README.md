@@ -1,4 +1,4 @@
-Node.js 'fs' module wrapper.
+`node:fs` module wrapper.
 
 Install
 -------
@@ -29,7 +29,7 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   Create target parent dir if not exist.</br>
   Otherwise same as fs.writeFile().
   
-### `writeJSON(filePath: string, data: any, pretty: bool): Promise<string>`
+### `writeJSON(filePath: string, data: any, pretty: boolean): Promise<string>`
   
   `pretty` (default: true): insert white space into the output JSON string for readability purposes.
 
@@ -39,28 +39,29 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
 ### `unlink(filePath: string): Promise<void>`
   
+  alias: `deleteFile(filePath: string): Promise<void>`
   alias: `rm(filePath: string): Promise<void>`
 
-  Silently failed on error.
+  Silently fails on error.
 
 ### `mv(oldPath: string, newPath: string): Promise<string>`
 
   Create target parent dir if not exist.</br>
   Move on same drive otherwise copy to target and delete origin.
 
-### `exists(path: string): Promise<bool>`
-### `existsAndIsOlderOrYoungerThan(path: string, option?: obj): Promise<bool>`
+### `exists(path: string): Promise<boolean>`
+### `existsAndIsOlderOrYoungerThan(path: string, option?: obj): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)</br>
 `younger`: compare mode younger than (true) or older than (false/default)
 
-### `existsAndIsOlderThan(path: string, option?: obj): Promise<bool>`
+### `existsAndIsOlderThan(path: string, option?: obj): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
 
-### `existsAndIsYoungerThan(path: string, option?: obj): Promise<bool>`
+### `existsAndIsYoungerThan(path: string, option?: obj): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
@@ -79,7 +80,7 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
   Recursive. Delete files if any.
 
-### `isDirEmpty(dirPath: string): Promise<bool>`
+### `isDirEmpty(dirPath: string): Promise<boolean>`
 ### `hashFile(filePath: string, algo?: string): Promise<string>`
 
   `algo` defaults to "sha1". Uses stream.
@@ -93,6 +94,13 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 #### `dirname(path: string): string`
 
   Handles path and fileURL.
+  
+#### `normalize(path: string, win32?: boolean): string`
+  
+  replace every `\\` with `/`<br/>
+  
+  When `win32` is set to true (default is false)<br/>
+  replace every `/` with `\\` 
 
 ### win32
 
@@ -101,6 +109,6 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 #### `removeHidden(path: string): Promise<void>`
 #### `setReadOnly(path: string): Promise<void>`
 #### `removeReadOnly(path: string): Promise<void>`
-#### `isHidden(path: string): Promise<bool>`
-#### `isReadOnly(path: string): Promise<bool>`
-#### `isHiddenAndReadOnly(path: string): Promise<bool>`
+#### `isHidden(path: string): Promise<boolean>`
+#### `isReadOnly(path: string): Promise<boolean>`
+#### `isHiddenAndReadOnly(path: string): Promise<boolean>`

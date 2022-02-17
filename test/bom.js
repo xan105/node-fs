@@ -1,4 +1,4 @@
-import * as fs from "../lib/esm.js";
+import * as fs from "../lib/index.js";
 import { readFile } from "node:fs/promises";
 
 await fs.writeFile("./sample/test.txt","hello world", { bom: true, encoding: "utf16le" });

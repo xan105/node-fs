@@ -1,5 +1,5 @@
 import nodePath from "node:path";
-import { path } from "../lib/esm.js";
+import { path } from "../lib/index.js";
 
 console.log( nodePath.resolve("./") );
 console.log( import.meta.url );

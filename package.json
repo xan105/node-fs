@@ -1,14 +1,14 @@
 {
   "name": "@xan105/fs",
-  "version": "2.0.0",
-  "description": "Node.js 'fs' module wrapper",
+  "version": "2.0.1",
+  "description": "node:fs module wrapper",
   "type": "module",
   "exports": {
-    ".": "./lib/esm.js",
+    ".": "./lib/index.js",
     "./path": "./lib/path.js",
     "./win32": "./lib/win32.js"
   },
-  "types": "./types/esm.d.ts",
+  "types": "./types/index.d.ts",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -33,9 +33,10 @@
   },
   "homepage": "https://github.com/xan105/node-fs#readme",
   "devDependencies": {
-    "eslint": "^8.1.0"
+    "eslint": "^8.9.0"
   },
   "dependencies": {
-    "@xan105/is": "^2.0.0"
+    "@xan105/error": "^1.1.0",
+    "@xan105/is": "^2.1.1"
   }
 }
