@@ -1,9 +1,14 @@
+About
+=====
+
 `node:fs` module wrapper.
 
 Install
--------
+=======
 
-`npm install @xan105/fs`
+```
+npm install @xan105/fs
+```
 
 API
 ===
