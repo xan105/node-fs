@@ -1,6 +1,6 @@
 {
   "name": "@xan105/fs",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "node:fs module wrapper",
   "type": "module",
   "exports": {
@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "@xan105/error": "^1.1.1",
-    "@xan105/is": "^2.1.2"
+    "@xan105/is": "^2.2.0"
   }
 }
