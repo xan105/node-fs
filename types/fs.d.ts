@@ -24,3 +24,4 @@ export function mkdir(dirPath: string): Promise<void>;
 export function rmdir(dirPath: string): Promise<void>;
 export function isDirEmpty(dirPath: string): Promise<boolean>;
 export function hashFile(filePath: string, algo?: string): Promise<string>;
+export function touch(filePath: string): Promise<void>;
