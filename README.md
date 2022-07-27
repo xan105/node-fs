@@ -106,6 +106,7 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 - absolute?: boolean (false)
   Return absolute file path
 - filter?: string[] (empty)
+- allowedExt?: string[] (empty)
 
 ### path
 

@@ -33,7 +33,8 @@ declare interface IlsOption{
   ignoreDotFile?: boolean,
   recursive?: boolean,
   absolute?: boolean,
-  filter?: string[]
+  filter?: string[],
+  allowedExt?: string[]
 }
 
 export function ls(dirPath: string, option?: IlsOption): Promise<string[]>;
