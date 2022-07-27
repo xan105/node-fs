@@ -25,3 +25,15 @@ export function rmdir(dirPath: string): Promise<void>;
 export function isDirEmpty(dirPath: string): Promise<boolean>;
 export function hashFile(filePath: string, algo?: string): Promise<string>;
 export function touch(filePath: string): Promise<void>;
+
+declare interface IlsOption{
+  excludeDir?: boolean,
+  excludeFile?: boolean,
+  ignoreSymlink?: boolean,
+  ignoreDotFile?: boolean,
+  recursive?: boolean,
+  absolute?: boolean,
+  filter?: string[]
+}
+
+export function ls(dirPath: string, option?: IlsOption): Promise<string[]>;

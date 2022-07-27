@@ -21,14 +21,14 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 - path
 - win32
 
-### `readFile(filePath: string, options?: obj): Promise<string | Buffer>`
+### `readFile(filePath: string, options?: object): Promise<string | Buffer>`
 
   `bomWarning` (default: true): warn on utf bom removal.</br>
   Auto remove utf bom (_only in string data_).</br>
   Otherwise same as fs.readFile().
 
 ### `readJSON(filePath: string): Promise<string>`
-### `writeFile(filePath: string, data: any, options?: obj): Promise<string>`
+### `writeFile(filePath: string, data: any, options?: object): Promise<string>`
 
   `bom` (default: false): add utf bom (_only in string data_).</br>
   Create target parent dir if not exist.</br>
@@ -55,18 +55,18 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   Move on same drive otherwise copy to target and delete origin.
 
 ### `exists(path: string): Promise<boolean>`
-### `existsAndIsOlderOrYoungerThan(path: string, option?: obj): Promise<boolean>`
+### `existsAndIsOlderOrYoungerThan(path: string, option?: object): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)</br>
 `younger`: compare mode younger than (true) or older than (false/default)
 
-### `existsAndIsOlderThan(path: string, option?: obj): Promise<boolean>`
+### `existsAndIsOlderThan(path: string, option?: object): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
 
-### `existsAndIsYoungerThan(path: string, option?: obj): Promise<boolean>`
+### `existsAndIsYoungerThan(path: string, option?: object): Promise<boolean>`
 
 `timeUnit`: s|m|h|d|w|M|Y (default day)</br>
 `time`: amount of time unit (default 1)
@@ -75,7 +75,7 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   
   alias `stats(path: string): Promise<any>`
   
-  On error returns an empty obj.
+  On error returns an empty object.
 
 ### `mkdir(dirPath: string): Promise<void>`
 
@@ -89,6 +89,23 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 ### `hashFile(filePath: string, algo?: string): Promise<string>`
 
   `algo` defaults to "sha1". Uses stream.
+  
+### `touch(filePath: string): Promise<void>`
+
+  Create, change and modify timestamps of a file.
+
+### `ls(dirPath: string, option?: object): Promise<string[]>`
+
+  List directory contents.
+  
+- excludeDir?: boolean (false)
+- excludeFile?: boolean (false)
+- ignoreSymlink?: boolean (false)
+- ignoreDotFile?: boolean (false)
+- recursive?: boolean (false)
+- absolute?: boolean (false)
+  Return absolute file path
+- filter?: string[] (empty)
 
 ### path
 
