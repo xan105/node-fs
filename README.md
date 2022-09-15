@@ -1,7 +1,7 @@
 About
 =====
 
-`node:fs` module wrapper.
+`node:fs` module wrapper to provide file system manipulation without headache.
 
 Install
 =======
@@ -9,6 +9,8 @@ Install
 ```
 npm install @xan105/fs
 ```
+
+📦 Scoped `@xan105` packages are for my own personal use but feel free to use them.
 
 API
 ===
@@ -112,7 +114,7 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
 #### `resolve(path: string): string`
 
-  Handles a very rare bug (_user reported_).
+  Resolve only when necessary to avoid strange bug on some strange system 🙃
 
 #### `dirname(path: string): string`
 

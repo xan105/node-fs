@@ -1,8 +1,8 @@
-export function readFile(filePath: string, options?: any): Promise<string | Buffer>;
+export function readFile(filePath: string, options?: object | string): Promise<string | Buffer>;
 export function readJSON(filePath: string): Promise<string>;
-export function writeFile(filePath: string, data: any, options?: any): Promise<string>;
-export function writeJSON(filePath: string, data: any, pretty: boolean): Promise<string>;
-export function copyFile(src: string, dest: string, flags: any): Promise<void>;
+export function writeFile(filePath: string, data: unknown, options?: object | string): Promise<string>;
+export function writeJSON(filePath: string, data: unknown, pretty: boolean): Promise<string>;
+export function copyFile(src: string, dest: string, flags: number): Promise<void>;
 export function unlink(filePath: string): Promise<void>;
 export function deleteFile(filePath: string): Promise<void>; //alias
 export function rm(filePath: string): Promise<void>; //alias
@@ -18,8 +18,8 @@ declare interface IExistsAndIsOption{
 export function existsAndIsOlderOrYoungerThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
 export function existsAndIsOlderThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
 export function existsAndIsYoungerThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
-export function stat(path: string): Promise<any>;
-export function stats(path: string): Promise<any>; //alias
+export function stat(path: string): Promise<object>;
+export function stats(path: string): Promise<object>; //alias
 export function mkdir(dirPath: string): Promise<void>;
 export function rmdir(dirPath: string): Promise<void>;
 export function isDirEmpty(dirPath: string): Promise<boolean>;
