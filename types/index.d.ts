@@ -1,3 +1,3 @@
-export * from "./fs.d.ts";
-export * as path from "./path.d.ts";
-export * as win32 from "./win32.d.ts";
+export * from "./fs.js";
+export * as path from "./path.js";
+export * as win32 from "./win32.js";

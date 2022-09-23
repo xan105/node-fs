@@ -1,40 +1,47 @@
 export function readFile(filePath: string, options?: object | string): Promise<string | Buffer>;
 export function readJSON(filePath: string): Promise<string>;
 export function writeFile(filePath: string, data: unknown, options?: object | string): Promise<string>;
-export function writeJSON(filePath: string, data: unknown, pretty: boolean): Promise<string>;
+export function writeJSON(filePath: string, data: unknown, pretty?: boolean): Promise<string>;
 export function copyFile(src: string, dest: string, flags: number): Promise<void>;
-export function unlink(filePath: string): Promise<void>;
-export function deleteFile(filePath: string): Promise<void>; //alias
-export function rm(filePath: string): Promise<void>; //alias
 export function mv(oldPath: string, newPath: string): Promise<string>;
 export function exists(path: string): Promise<boolean>;
 
 declare interface IExistsAndIsOption{
-  timeUnit?: string,
   time?: number,
-  younger?: boolean,
+  timeUnit?: string,
+  younger?: boolean
 }
-
 export function existsAndIsOlderOrYoungerThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
 export function existsAndIsOlderThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
 export function existsAndIsYoungerThan(path: string, option?: IExistsAndIsOption): Promise<boolean>;
+
 export function stat(path: string): Promise<object>;
-export function stats(path: string): Promise<object>; //alias
-export function mkdir(dirPath: string): Promise<void>;
-export function rmdir(dirPath: string): Promise<void>;
-export function isDirEmpty(dirPath: string): Promise<boolean>;
+export function mkdir(dirPath: string): Promise<string | undefined>;
+export function rm(path: string): Promise<void>;
 export function hashFile(filePath: string, algo?: string): Promise<string>;
 export function touch(filePath: string): Promise<void>;
 
-declare interface IlsOption{
-  excludeDir?: boolean,
-  excludeFile?: boolean,
-  ignoreSymlink?: boolean,
-  ignoreDotFile?: boolean,
-  recursive?: boolean,
-  absolute?: boolean,
-  filter?: string[],
-  allowedExt?: string[]
+declare interface IIgnore{
+  dir?: boolean,
+  file?: boolean,
+  symlink?: boolean,
+  socket?: boolean,
+  dot?: boolean
 }
 
+declare interface IlsOption{
+  verbose?: boolean,
+  recursive?: boolean,
+  absolute?: boolean,
+  follow?: boolean,
+  normalize?: boolean,
+  ignore?: IIgnore,
+  filter?: string[]
+  whitelist?: boolean,
+  ext?: string[],
+  pattern?: RegExp
+}
 export function ls(dirPath: string, option?: IlsOption): Promise<string[]>;
+
+//alias
+export { stat as stats, rm as unlink, rm as deleteFile, rm as rmdir };
