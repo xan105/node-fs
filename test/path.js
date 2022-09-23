@@ -11,3 +11,15 @@ t.test("__dirname", t => {
 
 t.end();
 });
+
+t.test("isRoot", t => {
+
+  t.ok(path.isRoot("C:\\"));
+  t.ok(path.isRoot("/"));
+  
+  t.notOk(path.isRoot("C:\\Users\\Public"));
+  t.notOk(path.isRoot("/home"));
+  t.notOk(path.isRoot("./"));
+
+t.end();
+});
