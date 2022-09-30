@@ -39,7 +39,7 @@ declare interface IlsOption{
   filter?: string[]
   whitelist?: boolean,
   ext?: string[],
-  pattern?: RegExp
+  pattern?: RegExp | null
 }
 export function ls(dirPath: string, option?: IlsOption): Promise<string[]>;
 
