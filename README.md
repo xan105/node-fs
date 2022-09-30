@@ -33,6 +33,9 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   Auto remove utf bom (string only).
 
 ### `readJSON(filePath: string): Promise<string>`
+
+  Parse JSON and remove utf bom if any.
+
 ### `writeFile(filePath: string, data: unknown, options?: object | string): Promise<string>`
 
   Create target parent dir if doesn't exist.
