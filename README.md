@@ -1,7 +1,7 @@
 About
 =====
 
-`node:fs` module wrapper to provide file system manipulation without headache.
+File system manipulation without headache.
 
 📦 Scoped `@xan105` packages are for my own personal use but feel free to use them.
 

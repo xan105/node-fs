@@ -1,7 +1,7 @@
 {
   "name": "@xan105/fs",
   "version": "2.1.0",
-  "description": "node:fs module wrapper to provide file system manipulation without headache",
+  "description": "File system manipulation without headache",
   "type": "module",
   "exports": {
     ".": {
