@@ -115,39 +115,41 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
   ⚙️ Options:
 
-  - verbose?: boolean (false)
-  - recursive?: boolean (false)
-  - absolute?: boolean false)
+  - `verbose`: boolean (false)
+  - `recursive`: boolean (false)
+  - `absolute`: boolean false)
   
     Return absolute or relative path
   
-  - follow?: boolean (false)
+  - `follow`: boolean (false)
     
       Whether or not to follow symlink
   
-  - normalize?: boolean (false)
+  - `normalize`: boolean (false)
     
       Whether or not to normalize path seperator to "/"
   
-  - ignore?: 
+  - `ignore`: 
   
-    + dir?: boolean (false)
-    + file?: boolean (false)
-    + symlink?: boolean (false)
-    + socket?: boolean (false)
-    + dot?: boolean (true)
+    + `dir`: boolean (false)
+    + `file`: boolean (false)
+    + `symlink`: boolean (false)
+    + `socket`: boolean (false)
+    + `dot`: boolean (true)
     
-  - filter?: string[] (empty)
-  - whitelist?: boolean (false)
+  - `filter`: string[] (empty)
+  - `whitelist`: boolean (false)
   
     Turn the filter list into a whitelist
   
-  - ext?: string[] (empty)
+  - `ext`: string[] (empty)
   
     Allowed file extension
   
-  - pattern?: RegExp (none)
+  - `pattern`: RegExp (none)
 
+  Return value:
+  
   If `verbose` is `true` returns a detailed list as
   
 ```ts
@@ -155,11 +157,13 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   {
     name: string, //file name
     path: string, //path of file
-    link?: string | udefined //symlink target
+    link?: string | undefined //symlink target
   },
   ...
 ]
 ```
+
+  Otherwise string[] (path of file)
   
 ### path
 

@@ -45,7 +45,7 @@ declare interface LsOption{
 declare interface LsVerboseList{
   name: string,
   path: string,
-  link?: string | udefined
+  link?: string | undefined
 }
 
 export function ls(dirPath: string, option?: LsOption): Promise<string[] | LsVerboseList[]>;
