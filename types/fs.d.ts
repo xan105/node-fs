@@ -21,7 +21,7 @@ export function rm(path: string): Promise<void>;
 export function hashFile(filePath: string, algo?: string): Promise<string>;
 export function touch(filePath: string): Promise<void>;
 
-declare interface IIgnore{
+declare interface LsIgnore{
   dir?: boolean,
   file?: boolean,
   symlink?: boolean,
@@ -29,19 +29,26 @@ declare interface IIgnore{
   dot?: boolean
 }
 
-declare interface IlsOption{
+declare interface LsOption{
   verbose?: boolean,
   recursive?: boolean,
   absolute?: boolean,
   follow?: boolean,
   normalize?: boolean,
-  ignore?: IIgnore,
+  ignore?: LsIgnore,
   filter?: string[]
   whitelist?: boolean,
   ext?: string[],
   pattern?: RegExp | null
 }
-export function ls(dirPath: string, option?: IlsOption): Promise<string[]>;
+
+declare interface LsVerboseList{
+  name: string,
+  path: string,
+  link?: string | udefined
+}
+
+export function ls(dirPath: string, option?: LsOption): Promise<string[] | LsVerboseList[]>;
 
 //alias
 export { stat as stats, rm as unlink, rm as deleteFile, rm as rmdir };

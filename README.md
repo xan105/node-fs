@@ -3,14 +3,22 @@ About
 
 `node:fs` module wrapper to provide file system manipulation without headache.
 
-Install
-=======
+📦 Scoped `@xan105` packages are for my own personal use but feel free to use them.
+
+Install / Runtime
+=================
+
+### 📦 Package manager
 
 ```
 npm install @xan105/fs
 ```
 
-📦 Scoped `@xan105` packages are for my own personal use but feel free to use them.
+<details><summary>Compatibility</summary>
+
+- Node ✔️
+
+</details>
 
 API
 ===
@@ -20,101 +28,144 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
 ## Named export
 
-- path
-- win32
+### `readFile(filePath: string, options?: object | string): Promise<string | Buffer>`
 
-### `readFile(filePath: string, options?: object): Promise<string | Buffer>`
-
-  `bomWarning` (default: true): warn on utf bom removal.</br>
-  Auto remove utf bom (_only in string data_).</br>
-  Otherwise same as fs.readFile().
+  Auto remove utf bom (string only).
 
 ### `readJSON(filePath: string): Promise<string>`
-### `writeFile(filePath: string, data: any, options?: object): Promise<string>`
+### `writeFile(filePath: string, data: unknown, options?: object | string): Promise<string>`
 
-  `bom` (default: false): add utf bom (_only in string data_).</br>
-  Create target parent dir if not exist.</br>
-  Otherwise same as fs.writeFile().
+  Create target parent dir if doesn't exist.
   
-### `writeJSON(filePath: string, data: any, pretty: boolean): Promise<string>`
+  ⚙️ Options:
   
-  `pretty` (default: true): insert white space into the output JSON string for readability purposes.
-
-### `copyFile(src: string, dest: string, flags: any): Promise<void>`
-
-  Create target parent dir if not exist.
-
-### `unlink(filePath: string): Promise<void>`
+  - `bom` (default: false)
+    
+    add utf bom (string only).
   
-  alias: `deleteFile(filePath: string): Promise<void>`
-  alias: `rm(filePath: string): Promise<void>`
+### `writeJSON(filePath: string, data: unknown, pretty?: boolean): Promise<string>`
+  
+ ⚙️ Options:
+ 
+  - `pretty` (default: true)
+  
+    insert white space into the output JSON string for readability purposes.
 
-  Silently fails on error.
+### `copyFile(src: string, dest: string, flags: number): Promise<void>`
+
+  Create target parent dir if doesn't exist.
 
 ### `mv(oldPath: string, newPath: string): Promise<string>`
 
-  Create target parent dir if not exist.</br>
+  Create target parent dir if doesn't exist.</br>
   Move on same drive otherwise copy to target and delete origin.
 
 ### `exists(path: string): Promise<boolean>`
 ### `existsAndIsOlderOrYoungerThan(path: string, option?: object): Promise<boolean>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
-`time`: amount of time unit (default 1)</br>
-`younger`: compare mode younger than (true) or older than (false/default)
+  ⚙️ Options:
+
+  - `time`: amount of time unit (default 1)
+  - `timeUnit`: s|m|h|d|w|M|Y (default day)
+  - `younger`: compare mode younger than (true) or older than (false/default)
 
 ### `existsAndIsOlderThan(path: string, option?: object): Promise<boolean>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
-`time`: amount of time unit (default 1)
+  ⚙️ Options:
 
+  - `time`: amount of time unit (default 1)
+  - `timeUnit`: s|m|h|d|w|M|Y (default day)
+  
 ### `existsAndIsYoungerThan(path: string, option?: object): Promise<boolean>`
 
-`timeUnit`: s|m|h|d|w|M|Y (default day)</br>
-`time`: amount of time unit (default 1)
+  ⚙️ Options:
 
-### `stat(path: string): Promise<any>`
+  - `time`: amount of time unit (default 1)
+  - `timeUnit`: s|m|h|d|w|M|Y (default day))
+
+### `stat(path: string): Promise<object>`
   
-  alias `stats(path: string): Promise<any>`
+  alias `stats(path: string): Promise<object>`
   
   On error returns an empty object.
 
-### `mkdir(dirPath: string): Promise<void>`
+### `mkdir(dirPath: string): Promise<string | undefined>`
 
   Recursive.
 
-### `rmdir(dirPath: string): Promise<void>`
+### `rm(path: string): Promise<void>`
 
-  Recursive. Delete files if any.
+  alias `unlink(path: string): Promise<void>`<br/>
+  alias `deleteFile(path: string): Promise<void>`<br/>
+  alias `rmdir(path: string): Promise<void>`
+  
+  Nuke the target 🚀💥.
 
-### `isDirEmpty(dirPath: string): Promise<boolean>`
 ### `hashFile(filePath: string, algo?: string): Promise<string>`
 
-  `algo` defaults to "sha1". Uses stream.
+  Hash specified file (use stream). `algo` defaults to "sha256".
   
 ### `touch(filePath: string): Promise<void>`
 
   Create, change and modify timestamps of a file.
 
-### `ls(dirPath: string, option?: object): Promise<string[]>`
+### `ls(dirPath: string, option?: object): Promise<string[] | object[]>`
 
   List directory contents.
-  
-- excludeDir?: boolean (false)
-- excludeFile?: boolean (false)
-- ignoreSymlink?: boolean (false)
-- ignoreDotFile?: boolean (false)
-- recursive?: boolean (false)
-- absolute?: boolean (false)
-  Return absolute file path
-- filter?: string[] (empty)
-- allowedExt?: string[] (empty)
 
+  ⚙️ Options:
+
+  - verbose?: boolean (false)
+  - recursive?: boolean (false)
+  - absolute?: boolean false)
+  
+    Return absolute or relative path
+  
+  - follow?: boolean (false)
+    
+      Whether or not to follow symlink
+  
+  - normalize?: boolean (false)
+    
+      Whether or not to normalize path seperator to "/"
+  
+  - ignore?: 
+  
+    + dir?: boolean (false)
+    + file?: boolean (false)
+    + symlink?: boolean (false)
+    + socket?: boolean (false)
+    + dot?: boolean (true)
+    
+  - filter?: string[] (empty)
+  - whitelist?: boolean (false)
+  
+    Turn the filter list into a whitelist
+  
+  - ext?: string[] (empty)
+  
+    Allowed file extension
+  
+  - pattern?: RegExp (none)
+
+  If `verbose` is `true` returns a detailed list as
+  
+```ts
+[
+  {
+    name: string, //file name
+    path: string, //path of file
+    link?: string | udefined //symlink target
+  },
+  ...
+]
+```
+  
 ### path
 
 #### `resolve(path: string): string`
 
-  Resolve only when necessary to avoid strange bug on some strange system 🙃
+  Resolve fileURL and path if necessary.
 
 #### `dirname(path: string): string`
 
@@ -126,6 +177,8 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
   
   When `win32` is set to true (default is false)<br/>
   replace every `/` with `\\` 
+  
+#### `isRoot(path: string): boolean`
 
 ### win32
 
