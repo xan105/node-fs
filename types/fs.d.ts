@@ -50,5 +50,7 @@ declare interface LsVerboseList{
 
 export function ls(dirPath: string, option?: LsOption): Promise<string[] | LsVerboseList[]>;
 
+export function compareFile(a: string, b:string, algo?: string): Promise<boolean>;
+
 //alias
 export { stat as stats, rm as unlink, rm as deleteFile, rm as rmdir };

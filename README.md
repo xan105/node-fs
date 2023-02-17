@@ -168,6 +168,12 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
   Otherwise string[] (path of file)
   
+#### `compareFile(a: string, b:string, algo?: string): Promise<boolean>`
+
+Compare files to determine if they are identical.
+
+Comparison is by default done with "sha1" `algo` (cf: `hashFile()`) unless files size don't match.
+
 ### path
 
 #### `resolve(path: string): string`
