@@ -46,13 +46,19 @@ Previous version(s) are CommonJS (CJS) with an ESM wrapper.
     
     add utf bom (string only).
   
-### `writeJSON(filePath: string, data: unknown, pretty?: boolean): Promise<string>`
+### `writeJSON(filePath: string, data: unknown, option?: object): Promise<string>`
   
+ Write JSON to file and return filePath for convenience.
+ 
  ⚙️ Options:
  
   - `pretty` (default: true)
   
     insert white space into the output JSON string for readability purposes.
+    
+  - `bigint2str` (default: true)
+  
+    convert bigint to string.
 
 ### `copyFile(src: string, dest: string, flags: number): Promise<void>`
 

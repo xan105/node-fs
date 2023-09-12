@@ -1,7 +1,13 @@
 export function readFile(filePath: string, options?: object | string): Promise<string | Buffer>;
 export function readJSON(filePath: string): Promise<string>;
 export function writeFile(filePath: string, data: unknown, options?: object | string): Promise<string>;
-export function writeJSON(filePath: string, data: unknown, pretty?: boolean): Promise<string>;
+
+declare interface IwriteJSONOption{
+  pretty?: boolean,
+  bigint2str?: boolean
+}
+
+export function writeJSON(filePath: string, data: unknown, option?: IwriteJSONOption): Promise<string>;
 export function copyFile(src: string, dest: string, flags: number): Promise<void>;
 export function mv(oldPath: string, newPath: string): Promise<string>;
 export function exists(path: string): Promise<boolean>;
