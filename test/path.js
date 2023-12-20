@@ -1,25 +1,23 @@
-import t from "tap";
+import test from "node:test";
+import assert from "node:assert/strict";
 import nodePath from "node:path";
 import { path } from "../lib/index.js";
 
-t.test("__dirname", t => {
-
-  const a = nodePath.resolve("./test");
-  const b = path.dirname(import.meta.url);
+test("path", async ()=>{
   
-  t.strictSame(a,b);
+  await test("__dirname", async ()=>{
+    const a = nodePath.resolve("./test");
+    const b = path.dirname(import.meta.url);
+    assert.equal(a,b);
+  });
 
-t.end();
-});
-
-t.test("isRoot", t => {
-
-  t.ok(path.isRoot("C:\\"));
-  t.ok(path.isRoot("/"));
+  await test("isRoot", async ()=>{
+    assert.ok(path.isRoot("C:\\"));
+    assert.ok(path.isRoot("/"));
+    
+    assert.ok(!path.isRoot("C:\\Users\\Public"));
+    assert.ok(!path.isRoot("/home"));
+    assert.ok(!path.isRoot("./"));
+  });
   
-  t.notOk(path.isRoot("C:\\Users\\Public"));
-  t.notOk(path.isRoot("/home"));
-  t.notOk(path.isRoot("./"));
-
-t.end();
 });
