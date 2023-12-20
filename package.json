@@ -1,6 +1,6 @@
 {
   "name": "@xan105/fs",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "File system manipulation without headache",
   "type": "module",
   "exports": {
@@ -18,12 +18,16 @@
     }
   },
   "types": "./types/index.d.ts",
+  "files": [
+    "lib/",
+    "types/"
+  ],
   "engines": {
     "node": ">=16.0.0"
   },
   "scripts": {
     "lint": "eslint \"./lib/**/*.{js,mjs}\" \"./types/**/*.d.ts\"",
-    "test": "tap \"./test/**/*.js\" --no-coverage --no-coverage-report",
+    "test": "node --test test/",
     "check": "tsc --noemit --checkjs",
     "declare": "tsc --declaration --emitDeclarationOnly --outDir \"./types\""
   },
@@ -63,11 +67,10 @@
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.49.0",
-    "tap": "^16.3.8",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@xan105/error": "^1.6.1",
-    "@xan105/is": "^2.8.2"
+    "@xan105/error": "^1.6.2",
+    "@xan105/is": "^2.9.3"
   }
 }
