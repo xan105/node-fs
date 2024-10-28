@@ -20,4 +20,13 @@ test("path", async ()=>{
     assert.ok(!path.isRoot("./"));
   });
   
+  await test("isBasename", async ()=>{
+    assert.ok(path.isBasename("foo.ext"));
+    assert.ok(path.isBasename("foo"));
+    
+    assert.ok(!path.isBasename("/path/to/foo"));
+    assert.ok(!path.isBasename("path/foo"));
+    assert.ok(!path.isBasename("./foo"));
+  });
+  
 });
