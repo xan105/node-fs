@@ -198,6 +198,7 @@ Comparison is by default done with "sha1" `algo` (cf: `hashFile()`) unless files
   replace every `/` with `\\` 
   
 #### `isRoot(path: string): boolean`
+#### `isBasename(path: string): boolean`
 
 ### win32
 
